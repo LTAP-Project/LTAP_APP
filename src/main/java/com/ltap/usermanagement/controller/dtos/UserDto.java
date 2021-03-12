@@ -54,4 +54,8 @@ public class UserDto {
 
   @NotNull(message = "Age cannot be null")
   private Integer age;
+
+  @NotNull(message = "Password cannot be null")
+  @NotEmpty(message = "Password cannot be empty")
+  private String password;
 }
