@@ -2,6 +2,7 @@ package com.ltap.usermanagement.Service;
 
 import com.ltap.usermanagement.controller.dtos.UerPreferencesDTO;
 import com.ltap.usermanagement.controller.dtos.UserDto;
+import com.ltap.usermanagement.controller.dtos.UserLogDTO;
 import com.ltap.usermanagement.entities.UserInfo;
 import com.ltap.usermanagement.entities.UserLog;
 import com.ltap.usermanagement.entities.UserPreference;
@@ -102,5 +103,17 @@ public class UserService {
     if (userPreferences == null || userPreferences.isEmpty()) return Collections.emptyList();
 
     return userPreferences.stream().map(UerPreferencesDTO::converter).collect(Collectors.toList());
+  }
+
+  public List<UserLogDTO> getAllUserLog(Long userId) {
+    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+
+    if (userInfo == null) throw new RecordNotFoundException("No User Found");
+
+    List<UserLog> userLogs = userInfo.getUserLogs();
+
+    if (userLogs == null || userLogs.isEmpty()) return Collections.emptyList();
+
+    return userLogs.stream().map(UserLogDTO::converter).collect(Collectors.toList());
   }
 }

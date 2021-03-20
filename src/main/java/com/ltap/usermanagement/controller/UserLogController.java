@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_LOG_CONTROLLER;
@@ -28,7 +29,7 @@ public class UserLogController {
   }
 
   @GetMapping("/{userId}")
-  public List<UerPreferencesDTO> getUserPreferences(@PathVariable Long userId) {
-    return userService.getUserHobby(userId);
+  public List<UserLogDTO> getUserLogs(@PathVariable @NotNull(message = "User Id can't be null") Long userId) {
+    return userService.getAllUserLog(userId);
   }
 }
