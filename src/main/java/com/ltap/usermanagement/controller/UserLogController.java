@@ -1,11 +1,11 @@
 package com.ltap.usermanagement.controller;
 
 import com.ltap.usermanagement.Service.UserService;
-import com.ltap.usermanagement.controller.dtos.UerPreferencesDTO;
 import com.ltap.usermanagement.controller.dtos.UserLogDTO;
 import com.ltap.usermanagement.entities.UserLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,6 +16,7 @@ import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_L
 
 @RequestMapping(USER_LOG_CONTROLLER)
 @RestController
+@Validated
 public class UserLogController {
 
   @Autowired private UserService userService;
@@ -29,7 +30,8 @@ public class UserLogController {
   }
 
   @GetMapping("/{userId}")
-  public List<UserLogDTO> getUserLogs(@PathVariable @NotNull(message = "User Id can't be null") Long userId) {
+  public List<UserLogDTO> getUserLogs(
+      @PathVariable @NotNull(message = "User Id can't be null") Long userId) {
     return userService.getAllUserLog(userId);
   }
 }

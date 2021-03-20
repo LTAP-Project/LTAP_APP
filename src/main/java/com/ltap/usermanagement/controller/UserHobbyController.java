@@ -5,8 +5,10 @@ import com.ltap.usermanagement.controller.dtos.UerPreferencesDTO;
 import com.ltap.usermanagement.entities.UserPreference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +16,7 @@ import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_P
 
 @RequestMapping(USER_PREFERENCE_CONTROLLER)
 @RestController
+@Validated
 public class UserHobbyController {
 
   @Autowired private UserService userService;
@@ -31,7 +34,8 @@ public class UserHobbyController {
   }
 
   @GetMapping("/{userId}")
-  public List<UerPreferencesDTO> getUserPreferences(@PathVariable Long userId) {
+  public List<UerPreferencesDTO> getUserPreferences(
+      @PathVariable @NotNull(message = "User Id can't be null") Long userId) {
     return userService.getUserHobby(userId);
   }
 }
