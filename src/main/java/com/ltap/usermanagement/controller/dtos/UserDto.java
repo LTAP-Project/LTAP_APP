@@ -15,7 +15,7 @@ import javax.validation.constraints.Pattern;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
-  private Integer id;
+  private Long id;
 
   @NotNull(message = "Email cannot be null")
   @Pattern(

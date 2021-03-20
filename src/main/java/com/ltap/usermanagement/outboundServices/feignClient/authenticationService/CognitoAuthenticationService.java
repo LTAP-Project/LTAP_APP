@@ -4,7 +4,6 @@ import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.*;
 import com.ltap.usermanagement.exception.aws.InternalServerErrorException;
 import com.ltap.usermanagement.outboundServices.AmazonClient;
-import com.ltap.usermanagement.outboundServices.feignClient.authenticationService.AuthenticationServiceProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -12,16 +11,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CognitoAuthenticationService implements AuthenticationServiceProxy {
 
+  private static final String rolePrefix = "ROLE_";
+
   @Value("${aws.userPoolId}")
   private String userPoolId;
 
   @Value("${aws.clientId}")
   private String clientId;
 
-  private @Autowired
-  AmazonClient amazonClientService;
-
-  private static final String rolePrefix = "ROLE_";
+  private @Autowired AmazonClient amazonClientService;
 
   @Override
   public Boolean signUp(String email, String username, String password) {
@@ -40,14 +38,17 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
 
       if (createUserResult.getUserSub() != null && !createUserResult.getUserSub().isEmpty()) {
 
-        AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest = new AdminUpdateUserAttributesRequest()
-            .withUserPoolId(userPoolId).withUsername(username)
-            .withUserAttributes(new AttributeType().withName("email_verified").withValue("true"));
+        AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest =
+            new AdminUpdateUserAttributesRequest()
+                .withUserPoolId(userPoolId)
+                .withUsername(username)
+                .withUserAttributes(
+                    new AttributeType().withName("email_verified").withValue("true"));
 
-        AdminUpdateUserAttributesResult adminUpdateUserAttributesResult = cognitoClient
-            .adminUpdateUserAttributes(adminUpdateUserAttributesRequest);
+        AdminUpdateUserAttributesResult adminUpdateUserAttributesResult =
+            cognitoClient.adminUpdateUserAttributes(adminUpdateUserAttributesRequest);
         adminConfirmSignUp(username);
-        addUserToGroup(username,"super admin");
+        addUserToGroup(username, "super admin");
         return true;
       }
       return false;
@@ -72,7 +73,7 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
 
       AdminAddUserToGroupRequest addUserToGroupRequest =
           new AdminAddUserToGroupRequest()
-              .withGroupName(convertToRoleTypeName(userType))
+              .withGroupName("ROLE_ADMIN")
               .withUsername(username)
               .withUserPoolId(userPoolId);
 
@@ -170,8 +171,6 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
     } catch (InternalErrorException ex) {
       throw new InternalServerErrorException("Something went wrong. Please try again later");
     }
-
-
   }
 
   @Override
@@ -204,7 +203,7 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
   public String getUserNameByAccessToken(String accessToken) {
     try {
       AWSCognitoIdentityProvider cognitoClient =
-              amazonClientService.getAmazonCognitoIdentityClient();
+          amazonClientService.getAmazonCognitoIdentityClient();
 
       GetUserRequest getUserRequest = new GetUserRequest().withAccessToken(accessToken);
       GetUserResult getUserResult = cognitoClient.getUser(getUserRequest);
@@ -218,16 +217,20 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
       throw new InternalServerErrorException("Something went wrong. Please try again later");
     }
   }
+
   @Override
-  public Boolean updateUser(String updatedUsername,String existingUserName) {
+  public Boolean updateUser(String updatedUsername, String existingUserName) {
     try {
       AWSCognitoIdentityProvider cognitoClient =
           amazonClientService.getAmazonCognitoIdentityClient();
-      AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest = new AdminUpdateUserAttributesRequest()
-          .withUserPoolId(userPoolId).withUsername(existingUserName)
-          .withUserAttributes(new AttributeType().withName("preferred_username").withValue(updatedUsername));
-      AdminUpdateUserAttributesResult adminUpdateUserAttributesResult = cognitoClient
-          .adminUpdateUserAttributes(adminUpdateUserAttributesRequest);
+      AdminUpdateUserAttributesRequest adminUpdateUserAttributesRequest =
+          new AdminUpdateUserAttributesRequest()
+              .withUserPoolId(userPoolId)
+              .withUsername(existingUserName)
+              .withUserAttributes(
+                  new AttributeType().withName("preferred_username").withValue(updatedUsername));
+      AdminUpdateUserAttributesResult adminUpdateUserAttributesResult =
+          cognitoClient.adminUpdateUserAttributes(adminUpdateUserAttributesRequest);
       return false;
     } catch (NotAuthorizedException ex) {
       throw new InternalServerErrorException("Request is not authorized");
@@ -238,7 +241,7 @@ public class CognitoAuthenticationService implements AuthenticationServiceProxy 
     }
   }
 
-  private String convertToRoleTypeName(String userType){
-    return rolePrefix + userType.replaceAll(" ", "_").toUpperCase();
+  private String convertToRoleTypeName(String userType) {
+    return rolePrefix + userType.replace(" ", "_").toUpperCase();
   }
 }

@@ -1,17 +1,20 @@
 package com.ltap.usermanagement.models;
 
+import com.ltap.usermanagement.entities.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Embeddable
-public class UserHobbies {
+public class UserHobby {
 
-  private String hobbyId;
+  @Id @GeneratedValue private String hobbyId;
   private Integer precedenceOrder;
+
 }

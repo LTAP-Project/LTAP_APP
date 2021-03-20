@@ -1,7 +1,8 @@
 package com.ltap.usermanagement.repository;
 
-import com.ltap.usermanagement.entities.UserInfo;
+import com.ltap.usermanagement.entities.UserLog;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserLogsRepo extends CrudRepository<UserInfo, Integer> {
-}
+@Repository
+public interface UserLogsRepo extends CrudRepository<UserLog, Long> {}

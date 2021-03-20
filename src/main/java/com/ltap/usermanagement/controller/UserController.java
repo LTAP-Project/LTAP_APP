@@ -11,8 +11,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
-import static com.ltap.usermanagement.controller.urlconstants.UriContants.USER_CONTROLLER;
+import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_CONTROLLER;
 
 @RestController
 @RequestMapping(USER_CONTROLLER)
@@ -31,17 +32,20 @@ public class UserController {
   }
 
   @GetMapping("/{userId}")
-  public UserInfo getUser(@PathVariable Integer userId) {
+  public UserInfo getUser(@PathVariable Long userId) {
     return userService.getUserInfo(userId);
   }
 
   @PutMapping("/{userId}")
-  public UserInfo updateUser(@PathVariable Integer userId, @Valid @RequestBody UserDto user) {
+  public UserInfo updateUser(
+      @PathVariable @NotNull(message = "User Id can't be null") Long userId,
+      @Valid @RequestBody UserDto user) {
+
     return userService.updateUserInfo(userId, user);
   }
 
   @DeleteMapping("/{userId}")
-  public String deleteUser(@PathVariable Integer userId) {
+  public String deleteUser(@PathVariable @NotNull(message = "User Id can't be null") Long userId) {
     cognitoAuthenticationService.deleteUser(userService.getUserEmail(userId));
     userService.deleteUser(userId);
     return "User SuccessFully Deleted";
