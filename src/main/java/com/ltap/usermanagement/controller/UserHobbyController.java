@@ -21,7 +21,7 @@ public class UserHobbyController {
 
   @Autowired private UserService userService;
 
-  @PutMapping("/{userId}")
+  @PutMapping("/{userId}/hobbies")
   @ResponseStatus(code = HttpStatus.CREATED)
   public void updateUserHobby(
       @PathVariable Long userId, @RequestBody List<UerPreferencesDTO> uerPreferencesDTOS) {
@@ -33,7 +33,7 @@ public class UserHobbyController {
     userService.updateUserHobbies(userId, userPreferences);
   }
 
-  @GetMapping("/{userId}")
+  @GetMapping("/{userId}/hobbies")
   public List<UerPreferencesDTO> getUserPreferences(
       @PathVariable @NotNull(message = "User Id can't be null") Long userId) {
     return userService.getUserHobby(userId);

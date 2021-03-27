@@ -21,7 +21,7 @@ public class UserLogController {
 
   @Autowired private UserService userService;
 
-  @PutMapping("/{userId}")
+  @PutMapping("/{userId}/logs")
   @ResponseStatus(code = HttpStatus.CREATED)
   public void updateUserHobby(
       @PathVariable Long userId, @Valid @RequestBody UserLogDTO userLogDTO) {
@@ -29,7 +29,7 @@ public class UserLogController {
     userService.addUserLog(userId, UserLog.converter(userLogDTO));
   }
 
-  @GetMapping("/{userId}")
+  @GetMapping("/{userId}/logs")
   public List<UserLogDTO> getUserLogs(
       @PathVariable @NotNull(message = "User Id can't be null") Long userId) {
     return userService.getAllUserLog(userId);
