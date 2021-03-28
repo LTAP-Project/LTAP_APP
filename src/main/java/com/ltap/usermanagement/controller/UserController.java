@@ -39,7 +39,7 @@ public class UserController {
         return userService.getUserInfo(userId);
     }
 
-    @GetMapping("/{uEmail}")
+    @GetMapping("/{uEmail}/info")
     public UserInfo getUserByEmail(@PathVariable @Valid @Email(message = "Email should be valid") String uEmail) {
         return userService.getUserByEmail(uEmail);
     }
