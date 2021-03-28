@@ -24,96 +24,104 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserService {
 
-  @Autowired UserRepo userRepo;
+    @Autowired
+    UserRepo userRepo;
 
-  @Autowired EntityManager entityManager;
+    @Autowired
+    EntityManager entityManager;
 
-  @Autowired UserPreferenceRepo userPreferenceRepo;
+    @Autowired
+    UserPreferenceRepo userPreferenceRepo;
 
-  public UserInfo saveUser(UserDto userDto) {
-    UserInfo user = new UserInfo();
-    BeanUtils.copyProperties(userDto, user);
-    return userRepo.save(user);
-  }
 
-  public UserInfo getUserInfo(Long userId) {
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+    public UserInfo saveUser(UserDto userDto) {
+        UserInfo user = new UserInfo();
+        BeanUtils.copyProperties(userDto, user);
+        return userRepo.save(user);
+    }
 
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
-    return userInfo;
-  }
+    public UserInfo getUserInfo(Long userId) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
 
-  public UserInfo updateUserInfo(Long userId, UserDto userDto) {
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
-    BeanUtils.copyProperties(userDto, userInfo);
-    return userRepo.save(userInfo);
-  }
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        return userInfo;
+    }
 
-  public String getUserEmail(Long userId) {
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
-    return userInfo.getEmail();
-  }
+    public UserInfo updateUserInfo(Long userId, UserDto userDto) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        BeanUtils.copyProperties(userDto, userInfo);
+        return userRepo.save(userInfo);
+    }
 
-  public void deleteUser(Long userId) {
-    userRepo.deleteById(userId);
-  }
+    public String getUserEmail(Long userId) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        return userInfo.getEmail();
+    }
 
-  public void updateUserHobbies(Long userId, List<UserPreference> UserPreference) {
+    public void deleteUser(Long userId) {
+        userRepo.deleteById(userId);
+    }
 
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
-    userInfo.setUserPreferences(UserPreference);
+    public void updateUserHobbies(Long userId, List<UserPreference> UserPreference) {
 
-    UserPreference.forEach(
-        x -> {
-          x.setUserInfo(userInfo);
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        userInfo.setUserPreferences(UserPreference);
 
-          entityManager.persist(x);
-        });
+        UserPreference.forEach(
+                x -> {
+                    x.setUserInfo(userInfo);
 
-    entityManager.persist(userInfo);
-  }
+                    entityManager.persist(x);
+                });
 
-  public void addUserLog(Long userId, UserLog log) {
+        entityManager.persist(userInfo);
+    }
 
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+    public void addUserLog(Long userId, UserLog log) {
 
-    UserLog userLog = new UserLog();
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
 
-    BeanUtils.copyProperties(log, userLog);
+        UserLog userLog = new UserLog();
 
-    userLog.setLoginTime(LocalDateTime.now());
+        BeanUtils.copyProperties(log, userLog);
 
-    userInfo.addULog(userLog);
-    userLog.setUserDetail(userInfo);
+        userLog.setLoginTime(LocalDateTime.now());
 
-    entityManager.persist(userInfo);
-  }
+        userInfo.addULog(userLog);
+        userLog.setUserDetail(userInfo);
 
-  public List<UerPreferencesDTO> getUserHobby(Long userId) {
+        entityManager.persist(userInfo);
+    }
 
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+    public List<UerPreferencesDTO> getUserHobby(Long userId) {
 
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
 
-    List<UserPreference> userPreferences = userInfo.getUserPreferences();
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
 
-    if (userPreferences == null || userPreferences.isEmpty()) return Collections.emptyList();
+        List<UserPreference> userPreferences = userInfo.getUserPreferences();
 
-    return userPreferences.stream().map(UerPreferencesDTO::converter).collect(Collectors.toList());
-  }
+        if (userPreferences == null || userPreferences.isEmpty()) return Collections.emptyList();
 
-  public List<UserLogDTO> getAllUserLog(Long userId) {
-    UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        return userPreferences.stream().map(UerPreferencesDTO::converter).collect(Collectors.toList());
+    }
 
-    if (userInfo == null) throw new RecordNotFoundException("No User Found");
+    public List<UserLogDTO> getAllUserLog(Long userId) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
 
-    List<UserLog> userLogs = userInfo.getUserLogs();
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
 
-    if (userLogs == null || userLogs.isEmpty()) return Collections.emptyList();
+        List<UserLog> userLogs = userInfo.getUserLogs();
 
-    return userLogs.stream().map(UserLogDTO::converter).collect(Collectors.toList());
-  }
+        if (userLogs == null || userLogs.isEmpty()) return Collections.emptyList();
+
+        return userLogs.stream().map(UserLogDTO::converter).collect(Collectors.toList());
+    }
+
+    public UserInfo getUserByEmail(String email) {
+        return userRepo.findByEmail(email).orElse(new UserInfo());
+    }
 }

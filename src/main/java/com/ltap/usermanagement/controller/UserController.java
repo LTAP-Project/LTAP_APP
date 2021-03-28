@@ -11,6 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_CONTROLLER;
@@ -20,34 +21,42 @@ import static com.ltap.usermanagement.controller.urlconstants.UriContents.USER_C
 @Validated
 public class UserController {
 
-  @Autowired UserService userService;
+    @Autowired
+    UserService userService;
 
-  @Autowired CognitoAuthenticationService cognitoAuthenticationService;
+    @Autowired
+    CognitoAuthenticationService cognitoAuthenticationService;
 
-  @PostMapping()
-  @ResponseStatus(code = HttpStatus.CREATED)
-  public ResponseEntity<UserInfo> save(@Valid @RequestBody UserDto user) {
-    cognitoAuthenticationService.signUp(user.getEmail(), user.getFirstName(), user.getPassword());
-    return ResponseEntity.ok(userService.saveUser(user));
-  }
+    @PostMapping()
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public ResponseEntity<UserInfo> save(@Valid @RequestBody UserDto user) {
+        cognitoAuthenticationService.signUp(user.getEmail(), user.getFirstName(), user.getPassword());
+        return ResponseEntity.ok(userService.saveUser(user));
+    }
 
-  @GetMapping("/{userId}")
-  public UserInfo getUser(@PathVariable Long userId) {
-    return userService.getUserInfo(userId);
-  }
+    @GetMapping("/{userId}")
+    public UserInfo getUser(@PathVariable Long userId) {
+        return userService.getUserInfo(userId);
+    }
 
-  @PutMapping("/{userId}")
-  public UserInfo updateUser(
-      @PathVariable @NotNull(message = "User Id can't be null") Long userId,
-      @Valid @RequestBody UserDto user) {
+    @GetMapping("/{uEmail}")
+    public UserInfo getUserByEmail(@PathVariable @Valid @Email(message = "Email should be valid") String uEmail) {
+        return userService.getUserByEmail(uEmail);
+    }
 
-    return userService.updateUserInfo(userId, user);
-  }
 
-  @DeleteMapping("/{userId}")
-  public String deleteUser(@PathVariable @NotNull(message = "User Id can't be null") Long userId) {
-    cognitoAuthenticationService.deleteUser(userService.getUserEmail(userId));
-    userService.deleteUser(userId);
-    return "User SuccessFully Deleted";
-  }
+    @PutMapping("/{userId}")
+    public UserInfo updateUser(
+            @PathVariable @NotNull(message = "User Id can't be null") Long userId,
+            @Valid @RequestBody UserDto user) {
+
+        return userService.updateUserInfo(userId, user);
+    }
+
+    @DeleteMapping("/{userId}")
+    public String deleteUser(@PathVariable @NotNull(message = "User Id can't be null") Long userId) {
+        cognitoAuthenticationService.deleteUser(userService.getUserEmail(userId));
+        userService.deleteUser(userId);
+        return "User SuccessFully Deleted";
+    }
 }
