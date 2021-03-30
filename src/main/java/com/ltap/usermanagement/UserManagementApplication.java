@@ -3,6 +3,7 @@ package com.ltap.usermanagement;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 @EnableJpaAuditing
+@EnableFeignClients
 public class UserManagementApplication {
 
   public static void main(String[] args) {

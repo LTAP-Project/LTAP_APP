@@ -7,6 +7,8 @@ import com.ltap.usermanagement.entities.UserInfo;
 import com.ltap.usermanagement.entities.UserLog;
 import com.ltap.usermanagement.entities.UserPreference;
 import com.ltap.usermanagement.exception.RecordNotFoundException;
+import com.ltap.usermanagement.outboundServices.feignClient.dto.HobbiesDTO;
+import com.ltap.usermanagement.outboundServices.feignClient.predictorProxyService.PredictorProxy;
 import com.ltap.usermanagement.repository.UserPreferenceRepo;
 import com.ltap.usermanagement.repository.UserRepo;
 import org.springframework.beans.BeanUtils;
@@ -32,6 +34,9 @@ public class UserService {
 
     @Autowired
     UserPreferenceRepo userPreferenceRepo;
+
+    @Autowired
+    PredictorProxy predictorProxy;
 
 
     public UserInfo saveUser(UserDto userDto) {
@@ -120,6 +125,36 @@ public class UserService {
 
         return userLogs.stream().map(UserLogDTO::converter).collect(Collectors.toList());
     }
+
+    public HobbiesDTO getUserPredictedHobby(Long userId, String time,
+                                            String status,
+                                            String emotion,
+                                            String duration) {
+        UserInfo userInfo = entityManager.find(UserInfo.class, userId);
+        if (userInfo == null) throw new RecordNotFoundException("No User Found");
+        List<HobbiesDTO> hobbiesDTOS = predictorProxy.getPredictorHobbies(time, status, emotion, duration);
+        List<UserPreference> userPreferences = userInfo.getUserPreferences();
+        int min = 1000;
+        HobbiesDTO hobbiesDTO = new HobbiesDTO();
+
+        for (UserPreference userPreference : userPreferences) {
+
+            for (HobbiesDTO hobbiesDTO1 : hobbiesDTOS) {
+                if (userPreference.getHobbyId().equals(hobbiesDTO1.getId())) {
+                    if (min > userPreference.getPreferenceOrder()) {
+                        min = userPreference.getPreferenceOrder();
+                        hobbiesDTO = hobbiesDTO1;
+                    }
+                }
+            }
+        }
+
+        if (hobbiesDTO.getId() == null || hobbiesDTO.getId().isEmpty())
+            hobbiesDTO = new HobbiesDTO("H15", "Take a nap");
+
+        return hobbiesDTO;
+    }
+
 
     public UserInfo getUserByEmail(String email) {
         return userRepo.findByEmail(email).orElse(new UserInfo());

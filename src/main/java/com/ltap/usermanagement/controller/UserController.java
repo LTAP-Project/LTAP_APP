@@ -4,6 +4,7 @@ import com.ltap.usermanagement.Service.UserService;
 import com.ltap.usermanagement.controller.dtos.UserDto;
 import com.ltap.usermanagement.entities.UserInfo;
 import com.ltap.usermanagement.outboundServices.feignClient.authenticationService.CognitoAuthenticationService;
+import com.ltap.usermanagement.outboundServices.feignClient.dto.HobbiesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,15 @@ public class UserController {
         return userService.getUserInfo(userId);
     }
 
+
+    @GetMapping("/{userId}/predictor")
+    public HobbiesDTO getUserPredictorHobbies(@PathVariable Long userId, @RequestParam String time,
+                                              @RequestParam String status,
+                                              @RequestParam String emotion,
+                                              @RequestParam String duration) {
+        return userService.getUserPredictedHobby(userId, time, status, emotion, duration);
+    }
+
     @GetMapping("/{uEmail}")
     public UserInfo getUserByEmail(@PathVariable @Valid @Email(message = "Email should be valid") String uEmail) {
         return userService.getUserByEmail(uEmail);
@@ -49,7 +59,6 @@ public class UserController {
     public UserInfo updateUser(
             @PathVariable @NotNull(message = "User Id can't be null") Long userId,
             @Valid @RequestBody UserDto user) {
-
         return userService.updateUserInfo(userId, user);
     }
 
