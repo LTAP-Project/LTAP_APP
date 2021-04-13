@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1a58e4ab-a7ec-4b00-8360-f2a2179ec6bb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appspec.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildspec.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/PredictorServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/contants/Duration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/contants/Emotion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/contants/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/controllers/PredictorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/controllers/UploadController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/entities/Hobby.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/entities/Logic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/entities/Prediction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/entities/RequestTime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/RecordNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomInternalErrorException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomInvalidPasswordException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomLimitExceededException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomNotAuthorizedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomUserNotfoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/CustomUsernameExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/exception/aws/InternalServerErrorException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/outboundServices/AmazonClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/repositories/LogicRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/repositories/RequestTimeRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ltap/predictorservice/services/PredictorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ltap/predictorservice/PredictorServiceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test1" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../.m2/wrapper/dists/apache-maven-3.6.3-bin/1iopthnavndlasol9gbrbg6bf2/apache-maven-3.6.3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1qMlnOfKOT70r7AeTijs6ZGfWQD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.ltap.usermanagement.outboundServices.feignClient.predictorProxyService" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.UserManagementApplication">
+    <configuration name="UserInfoManagementApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LTAP_APP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ltap.usermanagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ltap.usermanagement" />
+      <option name="MAIN_CLASS_NAME" value="com.ltap.usermanagement.UserInfoManagementApplicationTests" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PredictorServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="LTAP_APP" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ltap.predictorservice.PredictorServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="LTAP_APP" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ltap.usermanagement.UserManagementApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserInfoManagementApplicationTests.contextLoads" />
+        <item itemvalue="JUnit.UserInfoManagementApplicationTests.contextLoads" />
+        <item itemvalue="JUnit.UserInfoManagementApplicationTests.contextLoads" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a58e4ab-a7ec-4b00-8360-f2a2179ec6bb" name="Default Changelist" comment="" />
+      <created>1616897506853</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616897506853</updated>
+      <workItem from="1616897507948" duration="2893000" />
+      <workItem from="1616900792724" duration="381000" />
+      <workItem from="1616901319280" duration="3034000" />
+      <workItem from="1617029676393" duration="1686000" />
+      <workItem from="1617075586440" duration="3390000" />
+      <workItem from="1617086391042" duration="2996000" />
+      <workItem from="1617110075751" duration="1405000" />
+      <workItem from="1617115046199" duration="4544000" />
+      <workItem from="1618275697434" duration="527000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="693" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1617081990683">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="311" width="524" height="491" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1617081990683" />
+    <state x="693" y="339" width="524" height="451" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1617109373316">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="339" width="524" height="451" key="#com.intellij.ide.util.PackageChooserDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1617109373316" />
+    <state x="704" y="421" width="811" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1617109374560">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="704" y="421" width="811" height="279" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.27.1920.1053@0.27.1920.1053" timestamp="1617109374560" />
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1616899741408">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="693" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1616899741408" />
+    <state width="1238" height="213" key="GridCell.Tab.0.bottom" timestamp="1618039676799">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1618039676799" />
+    <state width="1238" height="213" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1617164811018" />
+    <state width="1874" height="340" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1617111034929" />
+    <state width="1238" height="213" key="GridCell.Tab.0.center" timestamp="1618039676798">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1618039676798" />
+    <state width="1238" height="213" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1617164811017" />
+    <state width="1874" height="340" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1617111034929" />
+    <state width="1238" height="213" key="GridCell.Tab.0.left" timestamp="1618039676797">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1618039676797" />
+    <state width="1238" height="213" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1617164811016" />
+    <state width="1874" height="340" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1617111034929" />
+    <state width="1238" height="213" key="GridCell.Tab.0.right" timestamp="1618039676798">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1618039676798" />
+    <state width="1238" height="213" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1617164811017" />
+    <state width="1874" height="340" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1617111034929" />
+    <state width="1238" height="213" key="GridCell.Tab.1.bottom" timestamp="1618039676801">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1618039676801" />
+    <state width="1238" height="213" key="GridCell.Tab.1.bottom/0.23.1280.777@0.23.1280.777" timestamp="1617164811019" />
+    <state width="1874" height="340" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1617111047485" />
+    <state width="1238" height="213" key="GridCell.Tab.1.center" timestamp="1618039676800">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1618039676800" />
+    <state width="1238" height="213" key="GridCell.Tab.1.center/0.23.1280.777@0.23.1280.777" timestamp="1617164811018" />
+    <state width="1874" height="340" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1617111047485" />
+    <state width="1238" height="213" key="GridCell.Tab.1.left" timestamp="1618039676800">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1618039676800" />
+    <state width="1238" height="213" key="GridCell.Tab.1.left/0.23.1280.777@0.23.1280.777" timestamp="1617164811018" />
+    <state width="1874" height="340" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1617111047485" />
+    <state width="1238" height="213" key="GridCell.Tab.1.right" timestamp="1618039676800">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state width="1238" height="213" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1618039676800" />
+    <state width="1238" height="213" key="GridCell.Tab.1.right/0.23.1280.777@0.23.1280.777" timestamp="1617164811018" />
+    <state width="1874" height="340" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1617111047485" />
+    <state x="416" y="109" key="RollbackChangesDialog" timestamp="1617115845954">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="416" y="109" key="RollbackChangesDialog/0.0.1280.800@0.0.1280.800" timestamp="1617115845954" />
+    <state x="443" y="131" width="1024" height="852" key="SettingsEditor" timestamp="1616897527835">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="443" y="131" width="1024" height="852" key="SettingsEditor/0.27.1920.1053@0.27.1920.1053" timestamp="1616897527835" />
+    <state x="100" y="127" width="1720" height="853" key="VCS.FileHistoryDialog" timestamp="1617110224624">
+      <screen x="0" y="27" width="1920" height="1053" />
+    </state>
+    <state x="100" y="127" width="1720" height="853" key="VCS.FileHistoryDialog/0.27.1920.1053@0.27.1920.1053" timestamp="1617110224624" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/ltap/usermanagement/UserInfoManagementApplicationTests.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/ltap/usermanagement/Service/UserService.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

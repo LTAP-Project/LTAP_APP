@@ -1,0 +1,10 @@
+version: 1.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: ${task}
+        LoadBalancerInfo:
+          ContainerName: "predictor-service"
+          ContainerPort: "8088"
+        PlatformVersion: "LATEST"

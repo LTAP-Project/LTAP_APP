@@ -1,0 +1,29 @@
+
+V
+java:S1126S"AReplace this if-then-else statement by a single return statement.(Î”‚.
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ˆÛÒÔ
+Z
+java:S14810"DRemove this unused "adminUpdateUserAttributesResult" local variable.(°›‘
+ƒ
+java:S1192?"mDefine a constant instead of duplicating this literal "Something went wrong. Please try again later" 8 times.(ç´Ëç
+W
+java:S1126o"AReplace this if-then-else statement by a single return statement.(µ•ø˜
+[
+java:S1481è"DRemove this unused "adminUpdateUserAttributesResult" local variable.(°›‘
+]
+java:S1126¼"AReplace this if-then-else statement by a single return statement.(¯®‡ªúÿÿÿÿ
+Q
+java:S1144ô":Remove this unused private "convertToRoleTypeName" method.(ŒÍ†Î
+X
+java:S1126ˆ"AReplace this if-then-else statement by a single return statement.(¤äá÷
+o	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(¬¿µ‰
+i
+java:S18540"SRemove this useless assignment to local variable "adminUpdateUserAttributesResult".(°›‘
+p
+java:S1192;"ZDefine a constant instead of duplicating this literal "Request is not authorized" 8 times.(èŒŞ¦
+]
+java:S1126¢"AReplace this if-then-else statement by a single return statement.(ã‚Õ†üÿÿÿÿ
+h
+java:S1192Y"RDefine a constant instead of duplicating this literal "User is not found" 7 times.(šÒšø
+j
+java:S1854è"SRemove this useless assignment to local variable "adminUpdateUserAttributesResult".(°›‘

@@ -1,0 +1,11 @@
+version: 1.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: ${task}
+        LoadBalancerInfo:
+          ContainerName: "user-management-service"
+          ContainerPort: "8087"
+        PlatformVersion: "LATEST"
+
